@@ -1,0 +1,5 @@
+.app-container {
+  @apply w-full h-screen bg-diffusion-bg text-diffusion-text-primary;
+  position: relative;
+  overflow: hidden;
+}

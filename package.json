@@ -1,0 +1,80 @@
+{
+  "name": "inspireflow",
+  "version": "1.0.0",
+  "description": "InspireFlow (灵感流动) - Node-based AI content creation desktop application",
+  "main": "dist-electron/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "copy:electron": "node -e \"const fs=require('fs'); const p=require('path'); const d='dist-electron'; fs.mkdirSync(d,{recursive:true}); fs.copyFileSync(p.join('electron','main.js'), p.join(d,'main.js')); fs.copyFileSync(p.join('electron','preload.js'), p.join(d,'preload.js'));\"",
+    "prebuild:win": "node scripts/prebuild-win.cjs",
+    "build:win": "vite build && npm run copy:electron && electron-builder --win",
+    "preview": "vite preview",
+    "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "npm run build && npm run copy:electron && electron-builder",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "build": {
+    "appId": "com.inspireflow.app",
+    "productName": "InspireFlow",
+    "directories": { "output": "release", "buildResources": "build" },
+    "files": ["dist/**/*", "dist-electron/**/*", "build/icon.ico"],
+    "asarUnpack": ["build/icon.ico"],
+    "icon": "icon.ico",
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "signAndEditExecutable": false,
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerLanguages": ["zh_CN", "en_US"],
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico"
+    }
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "reactflow": "^11.11.4",
+    "zustand": "^4.5.2",
+    "i18next": "^23.11.5",
+    "react-i18next": "^14.0.5",
+    "i18next-browser-languagedetector": "^7.2.0",
+    "framer-motion": "^11.0.5",
+    "lucide-react": "^0.344.0",
+    "@react-three/fiber": "^8.15.19",
+    "@react-three/drei": "^9.92.7",
+    "three": "^0.160.0",
+    "uuid": "^9.0.1",
+    "jszip": "^3.10.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.160.0",
+    "@types/uuid": "^9.0.7",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
+    "concurrently": "^8.2.2",
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11",
+    "vite-plugin-electron": "^0.28.0",
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "wait-on": "^7.2.0"
+  }
+}
