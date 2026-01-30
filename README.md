@@ -17,6 +17,19 @@
 - **保存与加载** — 工作流 JSON 导出/导入，本地持久化
 - **可扩展** — 可新增节点类型，详见 [节点开发](docs/NODE_DEVELOPMENT.md)
 
+## 界面展示
+<img width="2730" height="1603" alt="screenshot-20260129-175504" src="https://github.com/user-attachments/assets/ec7f349a-2754-4e55-9cd9-7f4e66addcfa" />
+<img width="2740" height="1590" alt="screenshot-20260129-173538" src="https://github.com/user-attachments/assets/3bf3ad48-c865-4679-8eb9-9e8b282efae4" />
+<img width="2744" height="1594" alt="screenshot-20260129-173309" src="https://github.com/user-attachments/assets/ddb0b5b9-455f-41a7-97e4-3b1152e7bd6b" />
+
+## 生成效果展示
+<img width="1344" height="768" alt="outputs_image-1769581783448" src="https://github.com/user-attachments/assets/ad28aadd-cd66-4384-9035-3e2fc851edeb" />
+https://github.com/user-attachments/assets/d84c5370-3c37-40c7-83fe-83666ec7c352
+
+
+
+
+
 ## 技术栈
 
 | 层级 | 技术 |
